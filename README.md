@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/hubotio/hubot-redis-brain.svg?branch=master)](https://travis-ci.org/hubotio/hubot-redis-brain) [![Coverage Status](https://coveralls.io/repos/github/hubotio/hubot-redis-brain/badge.svg?branch=master)](https://coveralls.io/github/hubotio/hubot-redis-brain?branch=master)
 
-# hubot-redis-brain
+# hubot-redis-brain-tls
 
 A hubot script to persist hubot's brain using redis
 
@@ -22,7 +22,7 @@ Then add **hubot-redis-brain** to your `external-scripts.json`:
 
 ## Configuration
 
-hubot-redis-brain requires a redis server to work. It uses the `REDIS_URL` environment variable for determining
+hubot-redis-brain-tls requires a redis server to work. It uses the `REDIS_URL` environment variable for determining
 where to connect to. The default is on localhost, port 6379 (ie the redis default).
 
 The following attributes can be set using the `REDIS_URL`
@@ -54,7 +54,7 @@ run your own, most package managers have a package for redis:
 ### Boxen
 
 If you are using [boxen](https://boxen.github.com/) to manage your environment,
-hubot-redis-brain will automatically use the boxen-managed redis (ie by using `BOXEN_REDIS_URL`).
+hubot-redis-brain-tls will automatically use the boxen-managed redis (ie by using `BOXEN_REDIS_URL`).
 
 ### Heroku
 
@@ -66,7 +66,7 @@ Redis Cloud or Redis To Go addon to have automatically configure itself to use i
 
 
 Other redis addons would need to be configured using `REDIS_URL` until support
-is added to hubot-redis-brain (or hubot-redis-brain needs to be updated to look
+is added to hubot-redis-brain-tls (or hubot-redis-brain-tls needs to be updated to look
   for the environment variable the service uses)
 
 ### Redis Twemproxy
