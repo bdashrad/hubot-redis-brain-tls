@@ -45,7 +45,7 @@ describe('redis-brain', () => {
 
     expect(RedisMock.createClient).to.have.been.calledOnce
     expect(RedisMock.createClient).to.have.been.calledWith('6379', 'localhost')
-    expect(robot.logger.info).to.have.been.calledWith('hubot-redis-brain: Using default redis on localhost:6379')
+    expect(robot.logger.info).to.have.been.calledWith('hubot-redis-brain-tls: Using default redis on localhost:6379')
 
     robot.shutdown()
   })
