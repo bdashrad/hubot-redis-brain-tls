@@ -22,9 +22,9 @@ module.exports = function (robot) {
   const redisUrl = process.env[redisUrlEnv] || 'redis://localhost:6379'
 
   if (redisUrlEnv) {
-    robot.logger.info(`hubot-redis-brain: Discovered redis from ${redisUrlEnv} environment variable`)
+    robot.logger.info(`hubot-redis-brain-tls: Discovered redis from ${redisUrlEnv} environment variable`)
   } else {
-    robot.logger.info('hubot-redis-brain: Using default redis on localhost:6379')
+    robot.logger.info('hubot-redis-brain-tls: Using default redis on localhost:6379')
   }
 
   if (process.env.REDIS_NO_CHECK) {
@@ -55,11 +55,11 @@ module.exports = function (robot) {
       if (err) {
         throw err
       } else if (reply) {
-        robot.logger.info(`hubot-redis-brain: Data for ${prefix} brain retrieved from Redis`)
+        robot.logger.info(`hubot-redis-brain-tls: Data for ${prefix} brain retrieved from Redis`)
         robot.brain.mergeData(JSON.parse(reply.toString()))
         robot.brain.emit('connected')
       } else {
-        robot.logger.info(`hubot-redis-brain: Initializing new data for ${prefix} brain`)
+        robot.logger.info(`hubot-redis-brain-tls: Initializing new data for ${prefix} brain`)
         robot.brain.mergeData({})
         robot.brain.emit('connected')
       }
@@ -70,10 +70,10 @@ module.exports = function (robot) {
   if (info.auth) {
     client.auth(info.auth.split(':')[1], function (err) {
       if (err) {
-        return robot.logger.error('hubot-redis-brain: Failed to authenticate to Redis')
+        return robot.logger.error('hubot-redis-brain-tls: Failed to authenticate to Redis')
       }
 
-      robot.logger.info('hubot-redis-brain: Successfully authenticated to Redis')
+      robot.logger.info('hubot-redis-brain-tls: Successfully authenticated to Redis')
       getData()
     })
   }
@@ -87,7 +87,7 @@ module.exports = function (robot) {
   })
 
   client.on('connect', function () {
-    robot.logger.debug('hubot-redis-brain: Successfully connected to Redis')
+    robot.logger.debug('hubot-redis-brain-tls: Successfully connected to Redis')
     if (!info.auth) { getData() }
   })
 
