@@ -10,13 +10,13 @@ See [`src/redis-brain.js`](src/redis-brain.js) for full documentation.
 
 In hubot project repo, run:
 
-`npm install hubot-redis-brain --save`
+`npm install hubot-redis-brain-tls --save`
 
 Then add **hubot-redis-brain** to your `external-scripts.json`:
 
 ```json
 [
-  "hubot-redis-brain"
+  "hubot-redis-brain-tls"
 ]
 ```
 
@@ -31,10 +31,14 @@ The following attributes can be set using the `REDIS_URL`
 * hostname
 * port
 * key prefix
+* protocol
 
 For example, `export REDIS_URL=redis://:password@192.168.0.1:16379/prefix` would
 authenticate with `password`, connecting to `192.168.0.1` on port `16379`, and store
 data using the `prefix:storage` key.
+
+`export REDIS_URL=rediss://:password@192.168.0.1:16379/prefix` would
+authenticate with `password`, connecting to `192.168.0.1` on port `16379` via TLS, and store data using the `prefix:storage` key.
 
 For a UNIX domain socket, `export REDIS_URL=redis://:password@/var/run/redis.sock?prefix` would authenticate with `password`, connecting to `/var/run/redis.sock`, and store data using the `prefix:storage` key.
 

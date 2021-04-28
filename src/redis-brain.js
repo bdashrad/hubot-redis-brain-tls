@@ -36,6 +36,11 @@ module.exports = function (robot) {
   if (info.hostname === '') {
     client = Redis.createClient(info.pathname)
     prefix = (info.query ? info.query.toString() : undefined) || 'hubot'
+  } else if (info.protocol === 'rediss') {
+    client = (info.auth || process.env.REDIS_NO_CHECK)
+              ? Redis.createClient(info.port, info.hostname, {tls: {}, no_ready_check: true})
+            : Redis.createClient(info.port, info.hostname, {tls: {}})
+    prefix = (info.path ? info.path.replace('/', '') : undefined) || 'hubot'
   } else {
     client = (info.auth || process.env.REDIS_NO_CHECK)
               ? Redis.createClient(info.port, info.hostname, {no_ready_check: true})
